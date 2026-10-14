@@ -37,7 +37,7 @@ jobs:
         run: pip install -r requirements.txt
 
       # Cache gambar hasil optimasi agar build berikutnya sangat cepat.
-      - uses: actions/cache@v4
+      - uses: actions/cache@v6
         with:
           path: .cache/images
           key: images-${{ hashFiles('static/uploads/**', 'build.py') }}
