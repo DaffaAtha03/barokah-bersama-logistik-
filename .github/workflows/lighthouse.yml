@@ -1,0 +1,36 @@
+# Audit kecepatan, SEO, dan aksesibilitas (Lighthouse) tiap bulan atau manual.
+# Hasil: laporan di tab "Summary" run dan sebagai artifact. Tidak menggagalkan deploy.
+name: Audit Lighthouse
+
+on:
+  schedule:
+    - cron: "0 2 1 * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  pages: read
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - id: url
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SITE_URL_VAR: ${{ vars.SITE_URL }}
+        run: |
+          URL="$SITE_URL_VAR"
+          [ -z "$URL" ] && URL=$(gh api "repos/${{ github.repository }}/pages" --jq .html_url)
+          echo "url=${URL%/}" >> "$GITHUB_OUTPUT"
+      - uses: treosh/lighthouse-ci-action@v12
+        with:
+          urls: |
+            ${{ steps.url.outputs.url }}/
+            ${{ steps.url.outputs.url }}/layanan/
+            ${{ steps.url.outputs.url }}/kontak/
+          uploadArtifacts: true
+          temporaryPublicStorage: false
+          runs: 2

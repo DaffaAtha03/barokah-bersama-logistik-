@@ -1,0 +1,50 @@
+# Backup mingguan: seluruh repositori (kode + konten + foto + riwayat) disimpan sebagai
+# GitHub Release. Release tidak kedaluwarsa dan bisa diunduh kapan saja. Disimpan 12 backup terakhir.
+name: Backup mingguan
+
+on:
+  schedule:
+    - cron: "30 20 * * 0" # Minggu 20.30 UTC = Senin 03.30 WIB
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Buat arsip
+        run: |
+          STAMP=$(date -u +%Y-%m-%d)
+          echo "STAMP=$STAMP" >> "$GITHUB_ENV"
+          mkdir -p out
+          # 1) Bundle git = salinan penuh dengan seluruh riwayat (bisa di-clone kembali)
+          git bundle create "out/bbl-website-$STAMP.bundle" --all
+          # 2) Zip berkas terkini agar mudah dibuka tanpa git
+          git archive --format=zip --prefix=bbl-website/ -o "out/bbl-website-$STAMP.zip" HEAD
+          ls -la out
+
+      - name: Buat Release backup
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TAG="backup-$STAMP"
+          if gh release view "$TAG" >/dev/null 2>&1; then gh release delete "$TAG" --yes --cleanup-tag; fi
+          gh release create "$TAG" out/* \
+            --title "Backup $STAMP" \
+            --notes "Backup otomatis. Pulihkan dengan: git clone bbl-website-$STAMP.bundle bbl-website" \
+            --prerelease --latest=false
+
+      - name: Hapus backup lama (simpan 12 terakhir)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release list --limit 100 --json tagName --jq '.[].tagName | select(startswith("backup-"))' \
+            | sort -r | tail -n +13 \
+            | while read -r TAG; do gh release delete "$TAG" --yes --cleanup-tag; done
