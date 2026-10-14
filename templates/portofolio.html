@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% from "_macros.html" import page_hero, cta_band %}
+{% block content %}
+
+{{ page_hero(portofolio.judul_halaman, portofolio.intro_halaman) }}
+
+<section class="section">
+  <div class="container">
+    {% if kategori|length > 1 %}
+    <div class="filters" role="group" aria-label="Filter kategori" data-filters>
+      <button type="button" class="chip is-active" data-filter="*" aria-pressed="true">Semua</button>
+      {% for k in kategori %}
+      <button type="button" class="chip" data-filter="{{ k }}" aria-pressed="false">{{ k }}</button>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if portofolio.catatan %}<p class="note">{{ portofolio.catatan }}</p>{% endif %}
+
+    <ul class="portfolio-grid" data-portfolio>
+      {% for p in portofolio.item %}
+      <li class="portfolio-item reveal" data-category="{{ p.kategori }}">
+        <button type="button" class="portfolio-card" data-full="{{ img_full(p.gambar) }}" data-alt="{{ p.judul }}{% if p.deskripsi %} — {{ p.deskripsi }}{% endif %}" aria-label="Perbesar: {{ p.judul }}">
+          <span class="portfolio-media">{{ img(p.gambar, p.alt or p.judul, "(min-width: 1100px) 360px, (min-width: 640px) 45vw, 100vw") }}</span>
+          <span class="portfolio-info">
+            {% if p.kategori %}<span class="tag">{{ p.kategori }}</span>{% endif %}
+            <strong>{{ p.judul }}</strong>
+            {% if p.deskripsi %}<span>{{ p.deskripsi }}</span>{% endif %}
+            {% if p.klien or p.tahun %}<small>{{ p.klien }}{% if p.klien and p.tahun %} · {% endif %}{{ p.tahun }}</small>{% endif %}
+          </span>
+        </button>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+{{ cta_band("Punya kebutuhan pengiriman serupa?", "Konsultasikan muatan Anda dan dapatkan rekomendasi armada dari tim kami.") }}
+
+{% endblock %}

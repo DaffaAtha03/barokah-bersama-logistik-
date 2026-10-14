@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="section simple-page">
+  <div class="container container-narrow center">
+    <p class="error-code">404</p>
+    <h1>Halaman tidak ditemukan</h1>
+    <p class="lead lead-dark">Alamat yang Anda tuju mungkin sudah dipindahkan atau salah ketik.</p>
+    <div class="btn-row center-row">
+      <a class="btn btn-primary btn-lg" href="{{ u('/') }}">Kembali ke beranda</a>
+      <a class="btn btn-ghost-dark btn-lg" href="{{ u('/kontak/') }}">Hubungi kami</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

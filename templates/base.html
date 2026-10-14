@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page_title }}</title>
+  <meta name="description" content="{{ page_desc }}">
+  <link rel="canonical" href="{{ abs_url(page_path) }}">
+  {% if noindex %}
+  <meta name="robots" content="noindex, follow">
+  {% else %}
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  {% endif %}
+  <meta name="theme-color" content="#0A1630">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'{% if site.ga4_id %} https://www.googletagmanager.com{% endif %}; style-src 'self'; img-src 'self' data:{% if site.ga4_id %} https://www.google-analytics.com https://*.googletagmanager.com{% endif %}; font-src 'self'; connect-src 'self' https://api.web3forms.com{% if site.ga4_id %} https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com{% endif %}; form-action 'self' https://api.web3forms.com https://wa.me; frame-src https://www.google.com https://maps.google.com; base-uri 'self'; object-src 'none'">
+
+  <meta property="og:site_name" content="{{ site.nama }}">
+  <meta property="og:locale" content="id_ID">
+  <meta property="og:type" content="{{ og_type|default('website') }}">
+  <meta property="og:title" content="{{ page_title }}">
+  <meta property="og:description" content="{{ page_desc }}">
+  <meta property="og:url" content="{{ abs_url(page_path) }}">
+  {% if og_image %}
+  <meta property="og:image" content="{{ abs_url(og_image) }}">
+  {% endif %}
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ page_title }}">
+  <meta name="twitter:description" content="{{ page_desc }}">
+  {% if og_image %}
+  <meta name="twitter:image" content="{{ abs_url(og_image) }}">
+  {% endif %}
+
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ u('/img/favicon-32.png') }}">
+  <link rel="apple-touch-icon" href="{{ u('/img/apple-touch-icon.png') }}">
+  <link rel="preload" href="{{ u('/fonts/inter-400.woff') }}" as="font" type="font/woff" crossorigin>
+  <link rel="preload" href="{{ u('/fonts/inter-800.woff') }}" as="font" type="font/woff" crossorigin>
+  <link rel="stylesheet" href="{{ u('/css/style.css') }}?v={{ build_id }}">
+  <script src="{{ u('/js/init.js') }}?v={{ build_id }}"></script>
+  {% for block in jsonld|default([]) %}
+  <script type="application/ld+json">{{ block|json_ld }}</script>
+  {% endfor %}
+</head>
+<body>
+  <a class="skip-link" href="#konten">Lewati ke konten</a>
+
+  <header class="site-header" data-header>
+    <div class="container header-inner">
+      <a class="brand" href="{{ u('/') }}" aria-label="{{ site.nama }} — beranda">
+        {{ img(site.logo, site.nama, "48px", "brand-logo", eager=True) }}
+        <span class="brand-text">
+          <strong>{{ site.nama_pendek }}</strong>
+          <small>{{ site.tagline }}</small>
+        </span>
+      </a>
+
+      <nav id="menu" class="nav" aria-label="Navigasi utama" data-nav>
+        <ul class="nav-list">
+          {% for label, href in nav %}
+          <li><a href="{{ u(href) }}"{% if (href == '/' and page_path == '/') or (href != '/' and page_path.startswith(href)) %} aria-current="page"{% endif %}>{{ label }}</a></li>
+          {% endfor %}
+        </ul>
+        <a class="btn btn-primary nav-cta" href="{{ u('/kontak/') }}#formulir">Minta Penawaran</a>
+      </nav>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Buka menu" data-nav-toggle>
+        <span class="when-closed">{{ icon('menu') }}</span>
+        <span class="when-open">{{ icon('close') }}</span>
+      </button>
+    </div>
+  </header>
+
+  <main id="konten">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a class="brand brand-light" href="{{ u('/') }}">
+          {{ img(site.logo, site.nama, "48px", "brand-logo") }}
+          <span class="brand-text"><strong>{{ site.nama_pendek }}</strong><small>{{ site.tagline }}</small></span>
+        </a>
+        <p>{{ site.deskripsi }}</p>
+        {% if socials %}
+        <ul class="social">
+          {% for key, label, url in socials %}
+          <li><a href="{{ url }}" target="_blank" rel="noopener noreferrer" aria-label="{{ label }}">{{ icon(key) }}</a></li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </div>
+
+      <div>
+        <h2 class="footer-title">Menu</h2>
+        <ul class="footer-links">
+          {% for label, href in nav %}
+          <li><a href="{{ u(href) }}">{{ label }}</a></li>
+          {% endfor %}
+          <li><a href="{{ u('/kebijakan-privasi/') }}">Kebijakan Privasi</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="footer-title">Layanan</h2>
+        <ul class="footer-links">
+          {% for s in layanan_data.layanan %}
+          <li><a href="{{ u('/layanan/') }}#{{ s.slug }}">{{ s.judul }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="footer-title">Hubungi kami</h2>
+        <ul class="footer-contact">
+          <li>{{ icon('pin') }}<span>{{ site.alamat }}</span></li>
+          <li>{{ icon('phone') }}<a href="{{ site.telepon|phone_href }}">{{ site.telepon|phone_display }}</a></li>
+          <li>{{ icon('mail') }}<a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+          {% if site.jam_operasional %}
+          <li>{{ icon('clock') }}<span>{{ site.jam_operasional }}</span></li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>&copy; {{ year }} {{ site.nama }}. Seluruh hak cipta dilindungi.</p>
+      <p>Bisnis dengan prinsip syariah dan muamalah.</p>
+    </div>
+  </footer>
+
+  <a class="wa-float" href="{{ wa_url() }}" target="_blank" rel="noopener noreferrer" aria-label="Chat WhatsApp {{ site.nama_pendek }}">
+    {{ icon('whatsapp') }}<span>Chat WhatsApp</span>
+  </a>
+
+  <dialog class="lightbox" data-lightbox aria-label="Pratinjau gambar">
+    <button class="lightbox-close" type="button" aria-label="Tutup" data-lightbox-close>{{ icon('close') }}</button>
+    <figure>
+      <img alt="" data-lightbox-img>
+      <figcaption data-lightbox-caption></figcaption>
+    </figure>
+  </dialog>
+
+  {% if site.ga4_id %}
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.ga4_id }}"></script>
+  <script src="{{ u('/js/analytics.js') }}?v={{ build_id }}" data-ga="{{ site.ga4_id }}" defer></script>
+  {% endif %}
+  <script src="{{ u('/js/main.js') }}?v={{ build_id }}" defer></script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+<article class="card article-card reveal">
+  <a class="article-media" href="{{ u('/artikel/' ~ post.slug ~ '/') }}" tabindex="-1" aria-hidden="true">
+    {{ img(post.image, post.image_alt, "(min-width: 960px) 360px, (min-width: 640px) 50vw, 100vw") }}
+  </a>
+  <div class="article-body">
+    <p class="meta"><time datetime="{{ post.date|iso_date }}">{{ post.date|tanggal }}</time> · {{ post.minutes }} menit baca</p>
+    <h3><a href="{{ u('/artikel/' ~ post.slug ~ '/') }}">{{ post.title }}</a></h3>
+    <p>{{ post.summary }}</p>
+    <a class="link-arrow" href="{{ u('/artikel/' ~ post.slug ~ '/') }}">Baca artikel {{ icon('arrow') }}</a>
+  </div>
+</article>

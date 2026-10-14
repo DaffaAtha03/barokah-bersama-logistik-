@@ -1,0 +1,170 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-copy reveal">
+      <p class="eyebrow eyebrow-light">{{ home.hero.label }}</p>
+      <h1>{{ home.hero.judul|highlight(home.hero.judul_sorot) }}</h1>
+      <p class="lead">{{ home.hero.subjudul }}</p>
+      <div class="btn-row">
+        <a class="btn btn-primary btn-lg" href="{{ u('/kontak/') }}#formulir">{{ home.hero.cta_utama }} {{ icon('arrow') }}</a>
+        <a class="btn btn-ghost btn-lg" href="{{ u('/layanan/') }}#armada">{{ home.hero.cta_sekunder }}</a>
+      </div>
+      <ul class="hero-points">
+        <li>{{ icon('check') }} Prinsip syariah &amp; muamalah</li>
+        <li>{{ icon('check') }} Legalitas terdokumentasi</li>
+        <li>{{ icon('check') }} Armada beragam</li>
+      </ul>
+    </div>
+
+    <div class="hero-media reveal">
+      <div class="hero-photo">
+        {{ img(home.hero.gambar, home.hero.gambar_alt, "(min-width: 960px) 520px, 100vw", "", eager=True) }}
+      </div>
+      <div class="float-card float-card-a">
+        <span class="float-icon">{{ icon('truck') }}</span>
+        <div><strong>CDE • CDD • Fuso</strong><small>Wing Box &amp; CDD Long</small></div>
+      </div>
+      <div class="float-card float-card-b">
+        <span class="float-icon">{{ icon('shield') }}</span>
+        <div><strong>Legalitas terdokumentasi</strong><small>Akta • NPWP • NIB</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stats-wrap" aria-label="Ringkasan perusahaan">
+  <div class="container">
+    <ul class="stats reveal">
+      {% for s in home.statistik %}
+      <li><strong>{{ s.angka }}</strong><span>{{ s.label }}</span></li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="section" id="layanan">
+  <div class="container">
+    <header class="section-head reveal">
+      <p class="eyebrow">Layanan</p>
+      <h2>{{ home.layanan_judul }}</h2>
+      <p>{{ home.layanan_intro }}</p>
+    </header>
+    <div class="grid grid-3">
+      {% for s in layanan_data.layanan %}
+      <article class="card service-card reveal">
+        <span class="icon-box">{{ icon(s.ikon) }}</span>
+        <h3>{{ s.judul }}</h3>
+        <p>{{ s.ringkas }}</p>
+        <a class="link-arrow" href="{{ u('/layanan/') }}#{{ s.slug }}">Selengkapnya {{ icon('arrow') }}</a>
+      </article>
+      {% endfor %}
+      <article class="card service-card service-cta reveal">
+        <h3>Butuh layanan khusus?</h3>
+        <p>Ceritakan kebutuhan pengiriman Anda — kami bantu carikan solusi yang tepat.</p>
+        <a class="btn btn-light" href="{{ u('/kontak/') }}#formulir">Konsultasi gratis</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section section-soft" id="keunggulan">
+  <div class="container">
+    <header class="section-head reveal">
+      <p class="eyebrow">Keunggulan</p>
+      <h2>{{ home.keunggulan_judul }}</h2>
+      <p>{{ home.keunggulan_intro }}</p>
+    </header>
+    <div class="grid grid-4">
+      {% for k in home.keunggulan %}
+      <article class="card value-card reveal">
+        <span class="value-no">{{ '%02d'|format(loop.index) }}</span>
+        <span class="icon-box icon-box-teal">{{ icon(k.ikon) }}</span>
+        <h3>{{ k.judul }}</h3>
+        <p>{{ k.teks }}</p>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section" id="armada">
+  <div class="container">
+    <header class="section-head reveal">
+      <p class="eyebrow">Armada</p>
+      <h2>{{ home.armada_judul }}</h2>
+      <p>{{ home.armada_intro }}</p>
+    </header>
+  </div>
+  <div class="container container-wide">
+    <ul class="fleet-scroll" tabindex="0" aria-label="Daftar armada, geser untuk melihat lainnya">
+      {% for a in armada %}
+      <li class="fleet-card">
+        <a href="{{ u('/layanan/') }}#armada-{{ a.nama|lower|replace(' ', '-') }}">
+          <div class="fleet-photo">{{ img(a.foto, a.alt, "(min-width: 960px) 300px, 78vw") }}</div>
+          <div class="fleet-info">
+            <h3>{{ a.nama }}</h3>
+            <small>{{ a.kepanjangan }}</small>
+            <p>{{ a.deskripsi }}</p>
+          </div>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="section section-dark" id="proses">
+  <div class="container">
+    <header class="section-head section-head-light reveal">
+      <p class="eyebrow eyebrow-light">Proses</p>
+      <h2>{{ home.proses_judul }}</h2>
+      <p>{{ home.proses_intro }}</p>
+    </header>
+    <ol class="steps">
+      {% for p in home.proses %}
+      <li class="step reveal">
+        <span class="step-no">{{ loop.index }}</span>
+        <h3>{{ p.judul }}</h3>
+        <p>{{ p.teks }}</p>
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="container cta-inner reveal">
+    <div>
+      <h2>{{ home.cta_judul }}</h2>
+      <p>{{ home.cta_teks }}</p>
+    </div>
+    <div class="btn-row">
+      <a class="btn btn-light btn-lg" href="{{ u('/kontak/') }}#formulir">Minta Penawaran</a>
+      <a class="btn btn-outline-light btn-lg" href="{{ wa_url() }}" target="_blank" rel="noopener noreferrer">{{ icon('whatsapp') }} WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+{% if articles %}
+<section class="section" id="artikel">
+  <div class="container">
+    <header class="section-head section-head-row reveal">
+      <div>
+        <p class="eyebrow">Artikel</p>
+        <h2>{{ home.artikel_judul }}</h2>
+        <p>{{ home.artikel_intro }}</p>
+      </div>
+      <a class="link-arrow" href="{{ u('/artikel/') }}">Semua artikel {{ icon('arrow') }}</a>
+    </header>
+    <div class="grid grid-3">
+      {% for post in articles %}
+      {% include "_article_card.html" %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% endblock %}

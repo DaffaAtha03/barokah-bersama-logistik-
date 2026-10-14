@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+{% from "_macros.html" import page_hero %}
+{% block content %}
+
+{{ page_hero("Kontak & Minta Penawaran", "Sampaikan kebutuhan pengiriman Anda. Kami akan menghubungi Anda untuk menyusun penawaran.", "Kontak") }}
+
+<section class="section">
+  <div class="container contact-grid">
+
+    <div class="contact-info">
+      <h2 class="h3">Hubungi kami langsung</h2>
+      <ul class="contact-cards">
+        <li>
+          <a class="card contact-card contact-wa" href="{{ wa_url() }}" target="_blank" rel="noopener noreferrer">
+            <span class="icon-box icon-box-teal">{{ icon('whatsapp') }}</span>
+            <span><small>WhatsApp</small><strong>{{ site.telepon|phone_display }}</strong></span>
+          </a>
+        </li>
+        <li>
+          <a class="card contact-card" href="{{ site.telepon|phone_href }}">
+            <span class="icon-box">{{ icon('phone') }}</span>
+            <span><small>Telepon</small><strong>{{ site.telepon|phone_display }}</strong></span>
+          </a>
+        </li>
+        <li>
+          <a class="card contact-card" href="mailto:{{ site.email }}">
+            <span class="icon-box">{{ icon('mail') }}</span>
+            <span><small>Email</small><strong class="break">{{ site.email }}</strong></span>
+          </a>
+        </li>
+        <li>
+          <div class="card contact-card">
+            <span class="icon-box">{{ icon('pin') }}</span>
+            <span><small>Alamat</small><strong>{{ site.alamat }}</strong></span>
+          </div>
+        </li>
+        {% if site.jam_operasional %}
+        <li>
+          <div class="card contact-card">
+            <span class="icon-box">{{ icon('clock') }}</span>
+            <span><small>Jam operasional</small><strong>{{ site.jam_operasional }}</strong></span>
+          </div>
+        </li>
+        {% endif %}
+      </ul>
+
+      <div class="map-wrap">
+        <iframe title="Peta lokasi {{ site.nama }}" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                src="https://maps.google.com/maps?q={{ site.peta_query|urlencode }}&amp;output=embed"></iframe>
+      </div>
+      <a class="link-arrow" href="https://www.google.com/maps/search/?api=1&amp;query={{ site.peta_query|urlencode }}" target="_blank" rel="noopener noreferrer">Buka di Google Maps {{ icon('arrow') }}</a>
+    </div>
+
+    <div class="card form-card" id="formulir">
+      <h2 class="h3">Formulir permintaan penawaran</h2>
+      <p class="form-intro">Isi data berikut. Kolom bertanda <span class="req">*</span> wajib diisi.</p>
+
+      <form id="lead-form" class="form" method="POST" action="https://api.web3forms.com/submit" novalidate
+            data-wa="{{ site.whatsapp|digits }}" data-has-key="{{ 'yes' if has_form_key else 'no' }}" data-thanks="{{ u('/terima-kasih/') }}">
+        <input type="hidden" name="access_key" value="{{ site.form_access_key }}">
+        <input type="hidden" name="subject" value="Permintaan penawaran baru — {{ site.nama_pendek }}">
+        <input type="hidden" name="from_name" value="Website {{ site.nama_pendek }}">
+        <input type="hidden" name="redirect" value="{{ abs_url('/terima-kasih/') }}">
+        <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+        <div class="field-row">
+          <div class="field">
+            <label for="f-nama">Nama lengkap <span class="req">*</span></label>
+            <input id="f-nama" name="nama" type="text" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="f-perusahaan">Perusahaan <small>(opsional)</small></label>
+            <input id="f-perusahaan" name="perusahaan" type="text" autocomplete="organization">
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="f-telepon">No. telepon / WhatsApp <span class="req">*</span></label>
+            <input id="f-telepon" name="telepon" type="tel" inputmode="tel" autocomplete="tel" placeholder="08xx xxxx xxxx" required>
+          </div>
+          <div class="field">
+            <label for="f-email">Email <small>(opsional)</small></label>
+            <input id="f-email" name="email" type="email" autocomplete="email">
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="f-layanan">Layanan yang dibutuhkan</label>
+            <select id="f-layanan" name="layanan">
+              <option value="">Pilih layanan…</option>
+              {% for s in services %}<option value="{{ s }}">{{ s }}</option>{% endfor %}
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-armada">Perkiraan armada</label>
+            <select id="f-armada" name="armada">
+              <option value="">Belum tahu / saran dari tim</option>
+              {% for f in fleets %}<option value="{{ f }}">{{ f }}</option>{% endfor %}
+            </select>
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="f-asal">Kota / lokasi asal</label>
+            <input id="f-asal" name="asal" type="text">
+          </div>
+          <div class="field">
+            <label for="f-tujuan">Kota / lokasi tujuan</label>
+            <input id="f-tujuan" name="tujuan" type="text">
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="f-barang">Jenis &amp; perkiraan berat/volume barang</label>
+          <input id="f-barang" name="barang" type="text" placeholder="Mis. karton elektronik, ± 2 ton">
+        </div>
+
+        <div class="field">
+          <label for="f-pesan">Pesan tambahan <span class="req">*</span></label>
+          <textarea id="f-pesan" name="message" rows="4" required placeholder="Jadwal yang diinginkan, kebutuhan khusus, dan informasi lain."></textarea>
+        </div>
+
+        <p class="form-privacy">Dengan mengirim formulir, Anda setuju data Anda kami gunakan untuk menghubungi Anda terkait penawaran. Lihat <a href="{{ u('/kebijakan-privasi/') }}">Kebijakan Privasi</a>.</p>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary btn-lg" data-submit>Kirim permintaan</button>
+          <button type="button" class="btn btn-wa btn-lg" data-wa-send>{{ icon('whatsapp') }} Kirim via WhatsApp</button>
+        </div>
+        <p class="form-status" role="status" aria-live="polite" data-status></p>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+{% endblock %}

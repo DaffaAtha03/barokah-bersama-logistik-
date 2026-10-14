@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% from "_macros.html" import cta_band %}
+{% block content %}
+
+<section class="page-hero page-hero-article">
+  <div class="container container-narrow">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="{{ u('/') }}">Home</a><span aria-hidden="true">/</span><a href="{{ u('/artikel/') }}">Artikel</a>
+    </nav>
+    <h1>{{ post.title }}</h1>
+    <p class="meta meta-light">{{ icon('calendar') }} <time datetime="{{ post.date|iso_date }}">{{ post.date|tanggal }}</time> <span aria-hidden="true">·</span> {{ post.minutes }} menit baca</p>
+  </div>
+</section>
+
+<article class="section article">
+  <div class="container container-narrow">
+    {% if post.image %}
+    <figure class="article-hero">
+      {{ img(post.image, post.image_alt, "(min-width: 820px) 760px, 100vw", "", eager=True) }}
+    </figure>
+    {% endif %}
+    <div class="prose prose-lg">{{ post.html }}</div>
+
+    <aside class="article-cta card">
+      <div>
+        <h2>Butuh bantuan untuk pengiriman Anda?</h2>
+        <p>Konsultasikan kebutuhan Anda dengan tim {{ site.nama_pendek }}.</p>
+      </div>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="{{ u('/kontak/') }}#formulir">Minta Penawaran</a>
+        <a class="btn btn-ghost-dark" href="https://wa.me/?text={{ (post.title ~ ' — ' ~ abs_url('/artikel/' ~ post.slug ~ '/'))|urlencode }}" target="_blank" rel="noopener noreferrer">Bagikan via WhatsApp</a>
+      </div>
+    </aside>
+  </div>
+</article>
+
+{% if others %}
+<section class="section section-soft">
+  <div class="container">
+    <header class="section-head"><h2>Artikel lainnya</h2></header>
+    <div class="grid grid-2">
+      {% for post in others %}
+      {% include "_article_card.html" %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% endblock %}

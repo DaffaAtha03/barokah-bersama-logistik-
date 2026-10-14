@@ -1,0 +1,41 @@
+{
+  "hero": {
+    "label": "Transportasi Logistik & Perdagangan",
+    "judul": "Mitra logistik yang handal dan terpercaya untuk bisnis Anda",
+    "judul_sorot": "handal dan terpercaya",
+    "subjudul": "Dari armada CDE, CDD, Fuso, hingga Wing Box — kami mengantar barang Anda dengan kerja profesional, pelayanan yang bisa dipercaya, dan prinsip bisnis syariah.",
+    "cta_utama": "Minta Penawaran",
+    "cta_sekunder": "Lihat Armada",
+    "gambar": "/uploads/armada-cdd-std-1.jpg",
+    "gambar_alt": "Barisan armada truk CDD CV. Barokah Bersama Logistik"
+  },
+  "statistik": [
+    { "angka": "5", "label": "Jenis armada: CDE, CDD, Fuso, CDD Long, Wing Box" },
+    { "angka": "2019", "label": "Resmi berdiri dan terdaftar" },
+    { "angka": "6", "label": "Dokumen legalitas utama terdokumentasi" }
+  ],
+  "layanan_judul": "Layanan untuk kebutuhan logistik Anda",
+  "layanan_intro": "Satu mitra untuk pengangkutan barang, ekspedisi, hingga perdagangan — dengan armada dan tim yang siap menyesuaikan kebutuhan.",
+  "keunggulan_judul": "Mengapa memilih Barokah Bersama Logistik?",
+  "keunggulan_intro": "Empat prinsip yang kami pegang dalam setiap pengiriman.",
+  "keunggulan": [
+    { "ikon": "shield", "judul": "Profesional", "teks": "Kerja yang rapi, tepat, dan bertanggung jawab di setiap tahap — dari penjemputan sampai barang tiba." },
+    { "ikon": "handshake", "judul": "Terpercaya", "teks": "Pelayanan yang jujur dan transparan agar Anda tenang menitipkan barang kepada kami." },
+    { "ikon": "scale", "judul": "Prinsip syariah", "teks": "Bisnis dijalankan dengan prinsip syariah dan muamalah: adil, jelas akadnya, dan saling menguntungkan." },
+    { "ikon": "refresh", "judul": "Perbaikan berkelanjutan", "teks": "Kerja tim dan evaluasi terus-menerus untuk menjaga kepuasan pelanggan sebagai standar hasil." }
+  ],
+  "armada_judul": "Armada yang sesuai dengan muatan Anda",
+  "armada_intro": "Pilih ukuran dan jenis armada yang tepat — tim kami siap membantu menentukannya.",
+  "proses_judul": "Cara kerja yang sederhana",
+  "proses_intro": "Empat langkah dari pertanyaan pertama sampai barang diterima.",
+  "proses": [
+    { "judul": "Konsultasi kebutuhan", "teks": "Sampaikan jenis barang, titik asal–tujuan, dan jadwal lewat formulir atau WhatsApp." },
+    { "judul": "Penawaran & penjadwalan", "teks": "Kami menyarankan armada yang sesuai, menyampaikan penawaran, lalu menjadwalkan pengiriman." },
+    { "judul": "Penjemputan & pengiriman", "teks": "Armada dan pengemudi berangkat sesuai jadwal yang disepakati." },
+    { "judul": "Konfirmasi selesai", "teks": "Barang diterima dan dikonfirmasi. Masukan Anda kami pakai untuk terus memperbaiki layanan." }
+  ],
+  "cta_judul": "Siap mengirim? Mari bicarakan kebutuhan Anda.",
+  "cta_teks": "Tim kami akan merespons permintaan penawaran Anda secepat mungkin.",
+  "artikel_judul": "Wawasan logistik",
+  "artikel_intro": "Panduan singkat untuk pengiriman yang lebih aman dan efisien."
+}

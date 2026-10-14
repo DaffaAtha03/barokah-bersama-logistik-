@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% from "_macros.html" import page_hero, cta_band %}
+{% block content %}
+
+{{ page_hero(layanan_data.judul_halaman, layanan_data.intro_halaman) }}
+
+<section class="section">
+  <div class="container">
+    <div class="service-list">
+      {% for s in layanan_data.layanan %}
+      <article class="service-row card reveal" id="{{ s.slug }}">
+        <div class="service-row-head">
+          <span class="icon-box icon-box-lg">{{ icon(s.ikon) }}</span>
+          <div>
+            <h2>{{ s.judul }}</h2>
+            <p>{{ s.ringkas }}</p>
+          </div>
+        </div>
+        <ul class="check-list">
+          {% for p in s.poin %}
+          <li>{{ icon('check') }}<span>{{ p }}</span></li>
+          {% endfor %}
+        </ul>
+        <a class="btn btn-ghost-dark" href="{{ u('/kontak/') }}?layanan={{ s.judul|urlencode }}#formulir">Tanyakan layanan ini</a>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section section-soft" id="armada">
+  <div class="container">
+    <header class="section-head reveal">
+      <p class="eyebrow">Armada</p>
+      <h2>{{ home.armada_judul }}</h2>
+      <p>{{ home.armada_intro }}</p>
+    </header>
+    <div class="fleet-list">
+      {% for a in armada %}
+      <article class="fleet-detail card reveal" id="armada-{{ a.nama|lower|replace(' ', '-') }}">
+        <div class="fleet-detail-info">
+          <h3>{{ a.nama }}</h3>
+          <p class="fleet-sub">{{ a.kepanjangan }}</p>
+          <p>{{ a.deskripsi }}</p>
+          {% if a.muatan %}<p class="fleet-load">{{ icon('box') }} Kapasitas muatan: <strong>{{ a.muatan }}</strong></p>{% endif %}
+          <a class="link-arrow" href="{{ u('/kontak/') }}?armada={{ a.nama|urlencode }}#formulir">Gunakan armada ini {{ icon('arrow') }}</a>
+        </div>
+        <ul class="fleet-gallery">
+          {% for g in a.galeri %}
+          <li>
+            <button type="button" class="thumb" data-full="{{ img_full(g.foto) }}" data-alt="{{ g.alt }}" aria-label="Perbesar foto: {{ g.alt }}">
+              {{ img(g.foto, g.alt, "(min-width: 960px) 240px, 45vw") }}
+              <span class="thumb-zoom">{{ icon('zoom') }}</span>
+            </button>
+          </li>
+          {% endfor %}
+        </ul>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <header class="section-head reveal">
+      <p class="eyebrow">Proses</p>
+      <h2>{{ layanan_data.proses_judul }}</h2>
+    </header>
+    <ol class="steps steps-light">
+      {% for p in home.proses %}
+      <li class="step reveal">
+        <span class="step-no">{{ loop.index }}</span>
+        <h3>{{ p.judul }}</h3>
+        <p>{{ p.teks }}</p>
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>
+
+<section class="section section-soft" id="faq">
+  <div class="container container-narrow">
+    <header class="section-head reveal">
+      <p class="eyebrow">FAQ</p>
+      <h2>{{ layanan_data.faq_judul }}</h2>
+    </header>
+    <div class="faq reveal">
+      {% for f in layanan_data.faq %}
+      <details>
+        <summary>{{ f.tanya }}{{ icon('chevron') }}</summary>
+        <p>{{ f.jawab }}</p>
+      </details>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{{ cta_band("Tentukan layanan dan armada yang tepat", "Sampaikan kebutuhan Anda — kami bantu menyusun solusi pengiriman.") }}
+
+{% endblock %}

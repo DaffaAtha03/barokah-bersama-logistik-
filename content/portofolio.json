@@ -1,0 +1,15 @@
+{
+  "judul_halaman": "Portofolio",
+  "intro_halaman": "Dokumentasi armada dan operasional kami. Tambahkan proyek, mitra, atau pengiriman unggulan lewat panel admin.",
+  "catatan": "",
+  "item": [
+    { "judul": "Armada CDD Standar", "kategori": "Armada", "deskripsi": "Barisan armada CDD standar siap beroperasi.", "tahun": "", "klien": "", "gambar": "/uploads/armada-cdd-std-1.jpg", "alt": "Barisan armada CDD standar hijau" },
+    { "judul": "Armada Wing Box", "kategori": "Armada", "deskripsi": "Wing Box untuk muatan besar dengan bongkar muat cepat.", "tahun": "", "klien": "", "gambar": "/uploads/armada-wingbox-1.jpg", "alt": "Armada Wing Box aluminium" },
+    { "judul": "Armada Fuso Box", "kategori": "Armada", "deskripsi": "Fuso box berkapasitas besar untuk volume tinggi.", "tahun": "", "klien": "", "gambar": "/uploads/armada-fuso-2.jpg", "alt": "Armada Fuso box oranye" },
+    { "judul": "Armada CDD Long", "kategori": "Armada", "deskripsi": "Bak box panjang untuk muatan berukuran besar.", "tahun": "", "klien": "", "gambar": "/uploads/armada-cdd-long-2.jpg", "alt": "Armada CDD Long tampak samping" },
+    { "judul": "Armada CDE", "kategori": "Armada", "deskripsi": "CDE lincah untuk distribusi skala kecil hingga menengah.", "tahun": "", "klien": "", "gambar": "/uploads/armada-cde-1.jpg", "alt": "Armada CDE kuning" },
+    { "judul": "Armada di area gudang", "kategori": "Operasional", "deskripsi": "Armada CDD berjajar di area parkir gudang.", "tahun": "", "klien": "", "gambar": "/uploads/armada-cdd-std-3.jpg", "alt": "Armada CDD hijau berjajar di gudang" },
+    { "judul": "Wing Box sayap terbuka", "kategori": "Operasional", "deskripsi": "Bak sayap terbuka mempercepat proses bongkar muat.", "tahun": "", "klien": "", "gambar": "/uploads/armada-wingbox-6.jpg", "alt": "Armada Wing Box hijau dengan sayap terbuka" },
+    { "judul": "Armada CDD berjajar", "kategori": "Operasional", "deskripsi": "Armada CDD hijau siap berangkat.", "tahun": "", "klien": "", "gambar": "/uploads/armada-cdd-std-2.jpg", "alt": "Dua armada CDD box kuning" }
+  ]
+}

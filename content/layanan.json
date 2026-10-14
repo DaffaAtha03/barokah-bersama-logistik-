@@ -1,0 +1,81 @@
+{
+  "judul_halaman": "Layanan & Armada",
+  "intro_halaman": "Layanan transportasi logistik dan perdagangan dengan armada yang bisa disesuaikan dengan jenis dan volume muatan Anda.",
+  "layanan": [
+    {
+      "slug": "angkutan-barang",
+      "ikon": "truck",
+      "judul": "Angkutan Barang Darat",
+      "ringkas": "Pengangkutan barang umum dan barang khusus lewat jalur darat menggunakan armada milik sendiri.",
+      "poin": [
+        "Armada CDE, CDD, Fuso, CDD Long, dan Wing Box",
+        "Muatan umum maupun muatan khusus",
+        "Jadwal pengiriman menyesuaikan kebutuhan"
+      ]
+    },
+    {
+      "slug": "ekspedisi-muatan",
+      "ikon": "route",
+      "judul": "Ekspedisi Muatan",
+      "ringkas": "Pengurusan ekspedisi muatan darat, kereta api, kapal laut, dan pesawat udara sesuai ruang lingkup usaha kami.",
+      "poin": [
+        "Ekspedisi muatan darat dan kereta api",
+        "Ekspedisi muatan kapal laut dan pesawat udara",
+        "Satu pintu koordinasi untuk pengiriman antarmoda"
+      ]
+    },
+    {
+      "slug": "jasa-pengurusan-transportasi",
+      "ikon": "file",
+      "judul": "Jasa Pengurusan Transportasi",
+      "ringkas": "Membantu mengatur dan mengurus kebutuhan transportasi barang Anda dari sisi administrasi dan koordinasi.",
+      "poin": [
+        "Koordinasi jadwal dan armada",
+        "Dukungan dokumen pengiriman",
+        "Komunikasi jelas selama proses berjalan"
+      ]
+    },
+    {
+      "slug": "kurir",
+      "ikon": "bolt",
+      "judul": "Aktivitas Kurir",
+      "ringkas": "Pengantaran barang dan dokumen untuk kebutuhan yang membutuhkan penanganan cepat dan tertib.",
+      "poin": [
+        "Pengantaran barang dan dokumen",
+        "Penanganan tertib dan terdata",
+        "Cocok untuk kebutuhan operasional harian"
+      ]
+    },
+    {
+      "slug": "perdagangan",
+      "ikon": "store",
+      "judul": "Perdagangan Besar",
+      "ringkas": "Perdagangan besar berbagai macam barang yang melengkapi layanan logistik bagi mitra bisnis kami.",
+      "poin": [
+        "Perdagangan berbagai macam barang",
+        "Didukung jaringan logistik sendiri",
+        "Transaksi dengan prinsip muamalah yang jelas"
+      ]
+    }
+  ],
+  "proses_judul": "Dari permintaan sampai barang tiba",
+  "faq_judul": "Pertanyaan yang sering diajukan",
+  "faq": [
+    {
+      "tanya": "Bagaimana cara meminta penawaran?",
+      "jawab": "Isi formulir di halaman Kontak atau hubungi kami lewat WhatsApp. Sampaikan jenis barang, perkiraan berat atau volume, titik asal dan tujuan, serta jadwal yang diinginkan."
+    },
+    {
+      "tanya": "Informasi apa yang perlu saya siapkan?",
+      "jawab": "Jenis dan jumlah barang, perkiraan berat atau dimensi, alamat penjemputan dan tujuan, serta tanggal yang dibutuhkan. Semakin lengkap, semakin cepat kami menyusun penawaran."
+    },
+    {
+      "tanya": "Bagaimana memilih jenis armada yang tepat?",
+      "jawab": "Anda tidak perlu menebak. Ceritakan muatan Anda, dan tim kami akan menyarankan armada yang paling sesuai. Panduan singkatnya juga ada di bagian Artikel."
+    },
+    {
+      "tanya": "Apakah tersedia kerja sama untuk kebutuhan rutin?",
+      "jawab": "Silakan hubungi kami untuk mendiskusikan kebutuhan pengiriman berkala. Kami terbuka untuk membahas pola kerja sama yang sesuai."
+    }
+  ]
+}

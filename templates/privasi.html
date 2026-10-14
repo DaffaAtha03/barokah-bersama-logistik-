@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% from "_macros.html" import page_hero %}
+{% block content %}
+{{ page_hero("Kebijakan Privasi", "Bagaimana kami mengelola data yang Anda kirim lewat situs ini.", "Kebijakan Privasi") }}
+<section class="section">
+  <div class="container container-narrow">
+    <div class="prose prose-lg">
+      <h2>Data yang kami kumpulkan</h2>
+      <p>Saat Anda mengisi formulir permintaan penawaran, kami menerima data yang Anda ketik: nama, perusahaan, nomor telepon atau WhatsApp, email, serta rincian kebutuhan pengiriman. Kami tidak meminta data identitas pribadi seperti nomor KTP melalui situs ini.</p>
+
+      <h2>Cara kami menggunakannya</h2>
+      <p>Data digunakan semata-mata untuk menghubungi Anda, menyusun penawaran, dan menindaklanjuti permintaan pengiriman. Kami tidak menjual data Anda kepada pihak lain.</p>
+
+      <h2>Pengiriman formulir</h2>
+      <p>Formulir diteruskan ke email kami melalui layanan pihak ketiga (Web3Forms). Jika Anda memilih &ldquo;Kirim via WhatsApp&rdquo;, pesan dibuat di perangkat Anda dan dikirim lewat aplikasi WhatsApp.</p>
+
+      {% if site.ga4_id %}
+      <h2>Statistik kunjungan</h2>
+      <p>Situs ini menggunakan Google Analytics untuk memahami jumlah dan pola kunjungan secara agregat, dengan anonimisasi alamat IP.</p>
+      {% endif %}
+
+      <h2>Hak Anda</h2>
+      <p>Anda dapat meminta kami menghapus atau memperbaiki data yang pernah Anda kirim dengan menghubungi <a href="mailto:{{ site.email }}">{{ site.email }}</a>.</p>
+
+      <p><small>Kebijakan ini dapat diperbarui sewaktu-waktu. Kami menyarankan konsultasi hukum untuk memastikan kebijakan sesuai dengan kebutuhan usaha Anda.</small></p>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,134 @@
+{
+  "armada": [
+    {
+      "nama": "CDE",
+      "kepanjangan": "Colt Diesel Engkel",
+      "deskripsi": "Truk box ringkas dan lincah untuk distribusi barang skala kecil sampai menengah.",
+      "muatan": "",
+      "foto": "/uploads/armada-cde-1.jpg",
+      "alt": "Armada CDE kuning",
+      "galeri": [
+        {
+          "foto": "/uploads/armada-cde-1.jpg",
+          "alt": "Armada CDE kuning"
+        },
+        {
+          "foto": "/uploads/armada-cde-2.jpg",
+          "alt": "Armada CDE kuning hitam"
+        },
+        {
+          "foto": "/uploads/armada-cde-3.jpg",
+          "alt": "Armada CDE box putih"
+        }
+      ]
+    },
+    {
+      "nama": "CDD STD",
+      "kepanjangan": "Colt Diesel Double — Standar",
+      "deskripsi": "Truk box serbaguna dengan kapasitas lebih besar dari CDE untuk pengiriman rutin.",
+      "muatan": "",
+      "foto": "/uploads/armada-cdd-std-1.jpg",
+      "alt": "Barisan armada CDD standar hijau",
+      "galeri": [
+        {
+          "foto": "/uploads/armada-cdd-std-1.jpg",
+          "alt": "Barisan armada CDD standar hijau"
+        },
+        {
+          "foto": "/uploads/armada-cdd-std-2.jpg",
+          "alt": "Dua armada CDD box kuning"
+        },
+        {
+          "foto": "/uploads/armada-cdd-std-3.jpg",
+          "alt": "Armada CDD hijau berjajar di gudang"
+        },
+        {
+          "foto": "/uploads/armada-cdd-std-4.jpg",
+          "alt": "Bak box CDD tampak belakang"
+        },
+        {
+          "foto": "/uploads/armada-cdd-std-5.jpg",
+          "alt": "Armada CDD box putih"
+        }
+      ]
+    },
+    {
+      "nama": "CDD LONG",
+      "kepanjangan": "Colt Diesel Double — Long",
+      "deskripsi": "Bak box lebih panjang untuk muatan berukuran besar atau volume lebih banyak.",
+      "muatan": "",
+      "foto": "/uploads/armada-cdd-long-1.jpg",
+      "alt": "Armada CDD Long box putih",
+      "galeri": [
+        {
+          "foto": "/uploads/armada-cdd-long-1.jpg",
+          "alt": "Armada CDD Long tampak depan"
+        },
+        {
+          "foto": "/uploads/armada-cdd-long-2.jpg",
+          "alt": "Armada CDD Long tampak samping"
+        },
+        {
+          "foto": "/uploads/armada-cdd-long-3.jpg",
+          "alt": "Armada CDD Long Isuzu putih"
+        },
+        {
+          "foto": "/uploads/armada-cdd-long-4.jpg",
+          "alt": "Bak box panjang CDD Long"
+        }
+      ]
+    },
+    {
+      "nama": "FUSO",
+      "kepanjangan": "Truk Fuso Box",
+      "deskripsi": "Truk box berkapasitas besar untuk pengiriman volume tinggi dengan jarak lebih jauh.",
+      "muatan": "",
+      "foto": "/uploads/armada-fuso-1.jpg",
+      "alt": "Armada Fuso box oranye",
+      "galeri": [
+        {
+          "foto": "/uploads/armada-fuso-1.jpg",
+          "alt": "Armada Fuso box oranye tampak depan"
+        },
+        {
+          "foto": "/uploads/armada-fuso-2.jpg",
+          "alt": "Armada Fuso box oranye tampak samping"
+        }
+      ]
+    },
+    {
+      "nama": "WING BOX",
+      "kepanjangan": "Truk Wing Box",
+      "deskripsi": "Bak dengan sayap yang terbuka ke samping untuk bongkar muat cepat dan muatan besar.",
+      "muatan": "",
+      "foto": "/uploads/armada-wingbox-1.jpg",
+      "alt": "Armada Wing Box aluminium",
+      "galeri": [
+        {
+          "foto": "/uploads/armada-wingbox-1.jpg",
+          "alt": "Armada Wing Box tampak samping"
+        },
+        {
+          "foto": "/uploads/armada-wingbox-2.jpg",
+          "alt": "Armada Wing Box hijau"
+        },
+        {
+          "foto": "/uploads/armada-wingbox-3.jpg",
+          "alt": "Armada Wing Box biru hijau"
+        },
+        {
+          "foto": "/uploads/armada-wingbox-4.jpg",
+          "alt": "Armada Wing Box oranye"
+        },
+        {
+          "foto": "/uploads/armada-wingbox-5.jpg",
+          "alt": "Armada Wing Box perak"
+        },
+        {
+          "foto": "/uploads/armada-wingbox-6.jpg",
+          "alt": "Armada Wing Box hijau dengan sayap terbuka"
+        }
+      ]
+    }
+  ]
+}

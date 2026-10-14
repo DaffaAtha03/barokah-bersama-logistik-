@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% from "_macros.html" import page_hero, cta_band %}
+{% block content %}
+
+{{ page_hero("Artikel & Wawasan", "Panduan praktis seputar pengiriman barang, pemilihan armada, pengemasan, dan dokumen logistik.", "Artikel") }}
+
+<section class="section">
+  <div class="container">
+    {% if articles %}
+    {% set featured = articles[0] %}
+    <article class="featured card reveal">
+      <a class="featured-media" href="{{ u('/artikel/' ~ featured.slug ~ '/') }}" tabindex="-1" aria-hidden="true">
+        {{ img(featured.image, featured.image_alt, "(min-width: 960px) 560px, 100vw", "", eager=True) }}
+      </a>
+      <div class="featured-body">
+        <p class="eyebrow">Terbaru</p>
+        <p class="meta"><time datetime="{{ featured.date|iso_date }}">{{ featured.date|tanggal }}</time> · {{ featured.minutes }} menit baca</p>
+        <h2><a href="{{ u('/artikel/' ~ featured.slug ~ '/') }}">{{ featured.title }}</a></h2>
+        <p>{{ featured.summary }}</p>
+        <a class="btn btn-primary" href="{{ u('/artikel/' ~ featured.slug ~ '/') }}">Baca artikel {{ icon('arrow') }}</a>
+      </div>
+    </article>
+
+    {% if articles|length > 1 %}
+    <div class="grid grid-3 grid-gap-top">
+      {% for post in articles[1:] %}
+      {% include "_article_card.html" %}
+      {% endfor %}
+    </div>
+    {% endif %}
+    {% else %}
+    <p class="note">Belum ada artikel. Tambahkan lewat panel admin.</p>
+    {% endif %}
+  </div>
+</section>
+
+{{ cta_band("Ada pertanyaan seputar pengiriman?", "Tim kami siap membantu menjawab dan menyusun penawaran.") }}
+
+{% endblock %}

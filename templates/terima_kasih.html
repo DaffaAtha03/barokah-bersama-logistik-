@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="section simple-page">
+  <div class="container container-narrow center">
+    <span class="icon-box icon-box-teal icon-box-lg">{{ icon('check') }}</span>
+    <h1>Terima kasih!</h1>
+    <p class="lead lead-dark">Permintaan Anda sudah kami terima. Tim {{ site.nama_pendek }} akan segera menghubungi Anda.</p>
+    <p>Butuh respons lebih cepat? Hubungi kami lewat WhatsApp.</p>
+    <div class="btn-row center-row">
+      <a class="btn btn-wa btn-lg" href="{{ wa_url() }}" target="_blank" rel="noopener noreferrer">{{ icon('whatsapp') }} Chat WhatsApp</a>
+      <a class="btn btn-ghost-dark btn-lg" href="{{ u('/') }}">Kembali ke beranda</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

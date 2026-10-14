@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% from "_macros.html" import page_hero, cta_band %}
+{% block content %}
+
+{{ page_hero(about.judul_halaman, about.intro_halaman) }}
+
+<section class="section">
+  <div class="container split">
+    <div class="reveal">
+      <p class="eyebrow">{{ about.profil_judul }}</p>
+      <h2>Berakar pada kepercayaan, bergerak bersama pelanggan</h2>
+      <div class="prose">{{ about.profil|nl2p }}</div>
+    </div>
+    <aside class="card principle-card reveal" aria-label="Prinsip utama">
+      <p class="eyebrow">Prinsip utama</p>
+      <ul class="principles">
+        {% for p in about.prinsip %}
+        <li><strong>{{ p.judul }}</strong> <span>{{ p.teks }}</span></li>
+        {% endfor %}
+      </ul>
+      <dl class="facts">
+        <div><dt>Bidang usaha</dt><dd>{{ site.tagline }}</dd></div>
+        <div><dt>Resmi berdiri</dt><dd>{{ site.tahun_berdiri }}</dd></div>
+        <div><dt>Lokasi</dt><dd>{{ site.alamat_ringkas }}</dd></div>
+      </dl>
+    </aside>
+  </div>
+</section>
+
+<section class="section section-soft">
+  <div class="container">
+    <div class="grid grid-2 vm-grid">
+      <article class="card vm-card vm-vision reveal">
+        <span class="icon-box">{{ icon('shield') }}</span>
+        <h2>{{ about.visi_judul }}</h2>
+        <p class="vm-quote">{{ about.visi }}</p>
+      </article>
+      <article class="card vm-card reveal">
+        <span class="icon-box icon-box-teal">{{ icon('route') }}</span>
+        <h2>{{ about.misi_judul }}</h2>
+        <ol class="mission">
+          {% for m in about.misi %}
+          <li>{{ m }}</li>
+          {% endfor %}
+        </ol>
+      </article>
+    </div>
+  </div>
+</section>
+
+{% if about.pimpinan.tampilkan %}
+<section class="section">
+  <div class="container leader reveal">
+    <div class="leader-photo">
+      {{ img(about.pimpinan.foto, about.pimpinan.alt, "(min-width: 820px) 340px, 70vw") }}
+    </div>
+    <div class="leader-text">
+      <p class="eyebrow">{{ about.pimpinan.judul }}</p>
+      <div class="prose">{{ about.pimpinan.sambutan|nl2p }}</div>
+      <p class="leader-name"><strong>{{ about.pimpinan.nama }}</strong>{% if about.pimpinan.jabatan %}<br><span>{{ about.pimpinan.jabatan }}</span>{% endif %}</p>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<section class="section section-soft" id="legalitas">
+  <div class="container">
+    <header class="section-head reveal">
+      <p class="eyebrow">Legalitas</p>
+      <h2>{{ about.legalitas_judul }}</h2>
+      <p>{{ about.legalitas_intro }}</p>
+    </header>
+    <div class="grid grid-3">
+      {% for l in about.legalitas %}
+      <article class="card legal-card reveal">
+        <span class="legal-check">{{ icon('check') }}</span>
+        <div>
+          <h3>{{ l.judul }}</h3>
+          <p>{{ l.teks }}</p>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+    <p class="note reveal">Ingin memverifikasi dokumen untuk keperluan kerja sama? Hubungi kami lewat <a href="{{ u('/kontak/') }}">halaman Kontak</a>.</p>
+  </div>
+</section>
+
+{{ cta_band("Mari berkenalan lebih dekat", "Ceritakan kebutuhan logistik Anda dan dapatkan penawaran dari tim kami.") }}
+
+{% endblock %}

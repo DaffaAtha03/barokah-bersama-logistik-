@@ -1,0 +1,39 @@
+{
+  "judul_halaman": "Tentang Kami",
+  "intro_halaman": "Mitra bisnis yang mengutamakan profesionalisme, pelayanan terpercaya, dan perbaikan berkelanjutan.",
+  "profil_judul": "Profil perusahaan",
+  "profil": "CV. Barokah Bersama Logistik bergerak pada bidang transportasi logistik dan perdagangan. Berkantor di Cibitung, Bekasi, kami melayani kebutuhan pengangkutan barang dengan armada yang beragam — dari CDE, CDD, Fuso, hingga Wing Box.\n\nKami menjalankan usaha dengan prinsip bisnis syariah dan muamalah, menjadikan kerja tim sebagai fondasi operasional, dan kepuasan pelanggan sebagai standar hasil.",
+  "visi_judul": "Visi",
+  "visi": "Menjadi mitra bisnis yang handal dan terpercaya dengan mengutamakan prinsip syariah dan muamalah.",
+  "misi_judul": "Misi",
+  "misi": [
+    "Selalu mengedepankan prinsip bisnis syariah.",
+    "Mengedepankan kerja profesional dan pelayanan terpercaya.",
+    "Menjadikan kerja tim dan perbaikan berkelanjutan sebagai bagian yang berkesinambungan.",
+    "Menjadikan kepuasan pelanggan untuk mencapai standar kerja dan hasil maksimal."
+  ],
+  "prinsip": [
+    { "judul": "Profesional.", "teks": "Kerja rapi, tepat, dan bertanggung jawab." },
+    { "judul": "Terpercaya.", "teks": "Pelayanan jujur dan transparan." },
+    { "judul": "Berkelanjutan.", "teks": "Terus memperbaiki diri bersama tim dan pelanggan." }
+  ],
+  "pimpinan": {
+    "tampilkan": true,
+    "judul": "Sambutan pimpinan",
+    "nama": "Pimpinan CV. Barokah Bersama Logistik",
+    "jabatan": "",
+    "foto": "/uploads/foto-pimpinan.jpg",
+    "alt": "Pimpinan CV. Barokah Bersama Logistik",
+    "sambutan": "Kami percaya bisnis yang baik dibangun di atas kepercayaan. Karena itu setiap pengiriman kami kerjakan dengan profesional, jujur, dan penuh tanggung jawab.\n\nTerima kasih telah mempercayakan kebutuhan logistik Anda kepada kami. Kami siap menjadi mitra yang handal bagi pertumbuhan bisnis Anda."
+  },
+  "legalitas_judul": "Legalitas & kepatuhan",
+  "legalitas_intro": "Dokumen legalitas perusahaan terdokumentasi untuk mendukung transparansi dan kepercayaan dalam kerja sama bisnis. Salinan dokumen tersedia atas permintaan resmi.",
+  "legalitas": [
+    { "judul": "Akta Pendirian", "teks": "Persekutuan Komanditer CV. Barokah Bersama Logistic, dibuat di hadapan notaris." },
+    { "judul": "Pengesahan Kemenkumham", "teks": "Surat keterangan terdaftar pada Sistem Administrasi Badan Usaha (AHU)." },
+    { "judul": "NPWP Perusahaan", "teks": "Terdaftar di KPP Pratama Cibitung." },
+    { "judul": "Surat Keterangan Terdaftar", "teks": "Diterbitkan Direktorat Jenderal Pajak, KPP Pratama Cibitung." },
+    { "judul": "Nomor Induk Berusaha (NIB)", "teks": "Terdaftar melalui sistem OSS Pemerintah Republik Indonesia." },
+    { "judul": "Izin Usaha & Izin Lokasi", "teks": "Izin usaha perdagangan, aktivitas kurir, dan izin lokasi melalui OSS." }
+  ]
+}

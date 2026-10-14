@@ -1,0 +1,254 @@
+# Konfigurasi panel admin (Sveltia CMS) — CV. Barokah Bersama Logistik
+# Dokumentasi: https://github.com/sveltia/sveltia-cms
+#
+# Catatan: "OWNER/REPO" otomatis diganti nama repositori saat build di GitHub Actions.
+# Jika Anda membangun manual, ubah menjadi mis. "namaanda/bbl-website".
+
+backend:
+  name: github
+  repo: OWNER/REPO
+  branch: main
+  commit_messages:
+    create: "Konten: tambah {{collection}} “{{slug}}”"
+    update: "Konten: ubah {{collection}} “{{slug}}”"
+    delete: "Konten: hapus {{collection}} “{{slug}}”"
+    uploadMedia: "Media: unggah “{{path}}”"
+    deleteMedia: "Media: hapus “{{path}}”"
+
+site_url: __SITE_URL__
+display_url: __SITE_URL__
+locale: id
+
+media_folder: static/uploads
+public_folder: /uploads
+
+collections:
+  # ------------------------------------------------------------------ Artikel
+  - name: artikel
+    label: Artikel
+    label_singular: Artikel
+    folder: content/artikel
+    extension: md
+    format: frontmatter
+    create: true
+    slug: "{{slug}}"
+    summary: "{{title}} — {{date}}"
+    sortable_fields: [date, title]
+    fields:
+      - { name: title, label: Judul, widget: string }
+      - { name: date, label: Tanggal terbit, widget: datetime, time_format: false, date_format: "YYYY-MM-DD", format: "YYYY-MM-DD" }
+      - { name: summary, label: Ringkasan (untuk daftar & Google), widget: text, hint: "1–2 kalimat, maksimal ±160 karakter." }
+      - { name: image, label: Gambar utama, widget: image, required: false }
+      - { name: image_alt, label: Deskripsi gambar (alt text), widget: string, required: false }
+      - { name: draft, label: Simpan sebagai draf (tidak ditampilkan), widget: boolean, default: false }
+      - { name: body, label: Isi artikel, widget: markdown }
+
+  # ----------------------------------------------------------- Konten halaman
+  - name: halaman
+    label: Konten Halaman
+    files:
+      - name: beranda
+        label: Halaman Home
+        file: content/home.json
+        format: json
+        fields:
+          - label: Hero (bagian atas)
+            name: hero
+            widget: object
+            fields:
+              - { name: label, label: Label kecil di atas judul, widget: string }
+              - { name: judul, label: Judul utama, widget: string }
+              - { name: judul_sorot, label: Bagian judul yang diberi warna (harus persis ada di judul), widget: string, required: false }
+              - { name: subjudul, label: Sub-judul, widget: text }
+              - { name: cta_utama, label: Teks tombol utama, widget: string }
+              - { name: cta_sekunder, label: Teks tombol kedua, widget: string }
+              - { name: gambar, label: Foto hero, widget: image }
+              - { name: gambar_alt, label: Deskripsi foto, widget: string }
+          - label: Statistik
+            name: statistik
+            widget: list
+            summary: "{{fields.angka}} — {{fields.label}}"
+            min: 1
+            max: 4
+            fields:
+              - { name: angka, label: Angka / teks besar, widget: string }
+              - { name: label, label: Keterangan, widget: string }
+          - { name: layanan_judul, label: Judul bagian Layanan, widget: string }
+          - { name: layanan_intro, label: Pengantar bagian Layanan, widget: text }
+          - { name: keunggulan_judul, label: Judul bagian Keunggulan, widget: string }
+          - { name: keunggulan_intro, label: Pengantar bagian Keunggulan, widget: text }
+          - label: Keunggulan
+            name: keunggulan
+            widget: list
+            summary: "{{fields.judul}}"
+            fields:
+              - { name: ikon, label: Ikon, widget: select, options: [shield, handshake, scale, refresh, truck, route, file, bolt, store, box, clock, check], default: shield }
+              - { name: judul, label: Judul, widget: string }
+              - { name: teks, label: Penjelasan, widget: text }
+          - { name: armada_judul, label: Judul bagian Armada, widget: string }
+          - { name: armada_intro, label: Pengantar bagian Armada, widget: text }
+          - { name: proses_judul, label: Judul bagian Proses, widget: string }
+          - { name: proses_intro, label: Pengantar bagian Proses, widget: text }
+          - label: Langkah proses
+            name: proses
+            widget: list
+            summary: "{{fields.judul}}"
+            fields:
+              - { name: judul, label: Judul langkah, widget: string }
+              - { name: teks, label: Penjelasan, widget: text }
+          - { name: cta_judul, label: Judul ajakan (CTA), widget: string }
+          - { name: cta_teks, label: Teks ajakan (CTA), widget: text }
+          - { name: artikel_judul, label: Judul bagian Artikel, widget: string }
+          - { name: artikel_intro, label: Pengantar bagian Artikel, widget: text }
+
+      - name: tentang
+        label: Halaman Tentang Kami
+        file: content/about.json
+        format: json
+        fields:
+          - { name: judul_halaman, label: Judul halaman, widget: string }
+          - { name: intro_halaman, label: Kalimat pengantar, widget: text }
+          - { name: profil_judul, label: Label profil, widget: string }
+          - { name: profil, label: Profil perusahaan (pisahkan paragraf dengan baris kosong), widget: text }
+          - { name: visi_judul, label: Judul Visi, widget: string }
+          - { name: visi, label: Visi, widget: text }
+          - { name: misi_judul, label: Judul Misi, widget: string }
+          - { name: misi, label: Misi (satu poin per baris), widget: list, field: { name: poin, label: Poin misi, widget: text } }
+          - label: Prinsip utama
+            name: prinsip
+            widget: list
+            summary: "{{fields.judul}}"
+            fields:
+              - { name: judul, label: Kata kunci, widget: string }
+              - { name: teks, label: Penjelasan singkat, widget: string }
+          - label: Sambutan pimpinan
+            name: pimpinan
+            widget: object
+            fields:
+              - { name: tampilkan, label: Tampilkan bagian ini, widget: boolean, default: true }
+              - { name: judul, label: Label bagian, widget: string }
+              - { name: nama, label: Nama, widget: string }
+              - { name: jabatan, label: Jabatan, widget: string, required: false }
+              - { name: foto, label: Foto, widget: image }
+              - { name: alt, label: Deskripsi foto, widget: string }
+              - { name: sambutan, label: Teks sambutan, widget: text }
+          - { name: legalitas_judul, label: Judul bagian Legalitas, widget: string }
+          - { name: legalitas_intro, label: Pengantar Legalitas, widget: text }
+          - label: Daftar legalitas
+            name: legalitas
+            widget: list
+            summary: "{{fields.judul}}"
+            fields:
+              - { name: judul, label: Nama dokumen, widget: string }
+              - { name: teks, label: Keterangan singkat, widget: string }
+
+      - name: layanan
+        label: Halaman Layanan
+        file: content/layanan.json
+        format: json
+        fields:
+          - { name: judul_halaman, label: Judul halaman, widget: string }
+          - { name: intro_halaman, label: Kalimat pengantar, widget: text }
+          - label: Daftar layanan
+            name: layanan
+            widget: list
+            summary: "{{fields.judul}}"
+            fields:
+              - { name: slug, label: ID tautan (huruf kecil, tanpa spasi, mis. kurir), widget: string }
+              - { name: ikon, label: Ikon, widget: select, options: [truck, route, file, bolt, store, box, shield, handshake, scale, refresh, clock, check], default: truck }
+              - { name: judul, label: Nama layanan, widget: string }
+              - { name: ringkas, label: Deskripsi singkat, widget: text }
+              - { name: poin, label: Poin unggulan, widget: list, field: { name: poin, label: Poin, widget: string } }
+          - { name: proses_judul, label: Judul bagian proses, widget: string }
+          - { name: faq_judul, label: Judul bagian FAQ, widget: string }
+          - label: Pertanyaan umum (FAQ)
+            name: faq
+            widget: list
+            summary: "{{fields.tanya}}"
+            fields:
+              - { name: tanya, label: Pertanyaan, widget: string }
+              - { name: jawab, label: Jawaban, widget: text }
+
+      - name: armada
+        label: Armada
+        file: content/armada.json
+        format: json
+        fields:
+          - label: Daftar armada
+            name: armada
+            widget: list
+            summary: "{{fields.nama}}"
+            fields:
+              - { name: nama, label: Nama armada (mis. CDE), widget: string }
+              - { name: kepanjangan, label: Nama lengkap / jenis, widget: string }
+              - { name: deskripsi, label: Deskripsi singkat, widget: text }
+              - { name: muatan, label: Kapasitas muatan (opsional, mis. "±2,5 ton"), widget: string, required: false }
+              - { name: foto, label: Foto utama, widget: image }
+              - { name: alt, label: Deskripsi foto utama, widget: string }
+              - label: Galeri foto
+                name: galeri
+                widget: list
+                required: false
+                summary: "{{fields.alt}}"
+                fields:
+                  - { name: foto, label: Foto, widget: image }
+                  - { name: alt, label: Deskripsi foto, widget: string }
+
+      - name: portofolio
+        label: Portofolio
+        file: content/portofolio.json
+        format: json
+        fields:
+          - { name: judul_halaman, label: Judul halaman, widget: string }
+          - { name: intro_halaman, label: Kalimat pengantar, widget: text }
+          - { name: catatan, label: Catatan di atas galeri (opsional), widget: string, required: false }
+          - label: Daftar portofolio
+            name: item
+            widget: list
+            summary: "{{fields.judul}} — {{fields.kategori}}"
+            fields:
+              - { name: judul, label: Judul, widget: string }
+              - { name: kategori, label: Kategori (dipakai untuk filter), widget: string }
+              - { name: deskripsi, label: Deskripsi singkat, widget: text, required: false }
+              - { name: klien, label: Klien / mitra (opsional), widget: string, required: false }
+              - { name: tahun, label: Tahun (opsional), widget: string, required: false }
+              - { name: gambar, label: Gambar, widget: image }
+              - { name: alt, label: Deskripsi gambar, widget: string, required: false }
+
+  # ---------------------------------------------------------------- Pengaturan
+  - name: pengaturan
+    label: Pengaturan Situs
+    files:
+      - name: situs
+        label: Identitas, kontak & integrasi
+        file: content/site.json
+        format: json
+        fields:
+          - { name: nama, label: Nama perusahaan (lengkap), widget: string }
+          - { name: nama_pendek, label: Nama pendek (header), widget: string }
+          - { name: singkatan, label: Singkatan, widget: string }
+          - { name: tagline, label: Tagline / bidang usaha, widget: string }
+          - { name: deskripsi, label: Deskripsi situs (untuk Google, ±155 karakter), widget: text }
+          - { name: tahun_berdiri, label: Tahun resmi berdiri, widget: string }
+          - { name: logo, label: Logo, widget: image }
+          - { name: og_image, label: Gambar pratinjau saat tautan dibagikan (1200×630), widget: image }
+          - { name: telepon, label: Nomor telepon, widget: string, hint: "Contoh: 085312226023" }
+          - { name: whatsapp, label: Nomor WhatsApp format internasional tanpa +, widget: string, hint: "Contoh: 6285312226023" }
+          - { name: email, label: Email, widget: string }
+          - { name: alamat, label: Alamat lengkap, widget: text }
+          - { name: alamat_ringkas, label: Alamat ringkas, widget: string }
+          - { name: peta_query, label: Kata kunci untuk peta Google Maps, widget: string }
+          - { name: jam_operasional, label: Jam operasional (kosongkan bila tidak ingin ditampilkan), widget: string, required: false }
+          - label: Media sosial (URL lengkap, kosongkan bila tidak ada)
+            name: sosial
+            widget: object
+            fields:
+              - { name: instagram, label: Instagram, widget: string, required: false }
+              - { name: facebook, label: Facebook, widget: string, required: false }
+              - { name: linkedin, label: LinkedIn, widget: string, required: false }
+              - { name: tiktok, label: TikTok, widget: string, required: false }
+              - { name: youtube, label: YouTube, widget: string, required: false }
+          - { name: pesan_whatsapp, label: Pesan awal tombol WhatsApp, widget: text }
+          - { name: form_access_key, label: Access Key Web3Forms (untuk notifikasi email formulir), widget: string, required: false, hint: "Dapatkan gratis di web3forms.com. Kunci ini memang bersifat publik." }
+          - { name: ga4_id, label: ID Google Analytics 4 (opsional, mis. G-XXXXXXXXXX), widget: string, required: false }
+          - { name: url, label: URL situs (kosongkan; diatur otomatis saat deploy), widget: string, required: false }
