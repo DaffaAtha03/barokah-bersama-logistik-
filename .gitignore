@@ -1,0 +1,8 @@
+# Hasil build & cache (dibuat ulang otomatis oleh GitHub Actions)
+_site/
+.cache/
+__pycache__/
+*.pyc
+.venv/
+.DS_Store
+Thumbs.db
