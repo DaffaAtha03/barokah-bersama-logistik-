@@ -47,7 +47,7 @@ jobs:
         run: python -m unittest discover -s tests -v
 
       - id: pages
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@v6
 
       - name: Build situs
         env:
